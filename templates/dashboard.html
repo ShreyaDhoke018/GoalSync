@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style2.css') }}"
+    />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home Page</title>
+  </head>
+  <body>
+    <div class="navbar">
+      <div class="logo-heading">
+        <div class="logo">
+          <img src="{{ url_for('static', filename='images/logo.png') }}" />
+        </div>
+        <div class="heading">
+          <h1>GoalSync</h1>
+        </div>
+      </div>
+      <div class="navbar_sections">
+        <div class="navbar_section">
+          <a href="#Home" class="active">Home</a>
+        </div>
+        <div class="navbar_section">
+          <a href="#About">About Us</a>
+        </div>
+        <!-- <div class="navbar_section">
+          <a href="#Contact">Contact</a>
+        </div> -->
+        <!-- <div class="navbar_section">
+          <a href="#Profile">Profile</a>
+        </div> -->
+        <div class="navbar_section">
+          <a href="{{ url_for('upload_marks') }}">Schedule</a>
+        </div>
+        <div class="navbar_section">
+          <a href="{{ url_for('logout') }}" class="hover:underline">Logout</a>
+        </div>
+      </div>
+    </div>
+
+    {% if 'username' in session %}
+    <!-- <span class="mr-4">Hello, {{ session['username'] }}</span> -->
+    <div class="home" id="Home">
+      <h1>Welcome {{ session['username'] }}, to GoalSync</h1>
+      <a href="{{ url_for('questions') }}">Get Started</a>
+    </div>
+    <div class="about" id="About">
+      <div class="about-container">
+        <div class="about-text">
+          <h1>About Us</h1>
+          <p>
+            Welcome to GoalSync! We are dedicated to helping students achieve
+            their academic goals effectively. By analyzing your current CGPA and
+            desired performance, we provide personalized study hours
+            recommendations and a smart distribution of time across subjects.
+          </p>
+          <p>
+            Our platform is designed to simplify study planning, boost
+            efficiency, and help you excel in every subject. Let us help you
+            transform your efforts into success with scientifically backed
+            strategies and an intuitive interface.
+          </p>
+        </div>
+        <div class="about-image">
+          <img
+            src="{{ url_for('static', filename='images/study_guide.jpeg') }}"
+            alt="Study Guide"
+          />
+        </div>
+      </div>
+    </div>
+    <!-- <div class="contact" id="Contact">
+      <h1>Contact</h1>
+    </div> -->
+    <!-- <div class="profile" id="Profile">
+      <h1>Profile</h1>
+    </div> -->
+
+    {% else %}
+    <a href="{{ url_for('login') }}" class="mr-4 hover:underline">Login</a>
+    <a href="{{ url_for('signup') }}" class="hover:underline">Sign Up</a>
+    {% endif %}
+  </body>
+</html>

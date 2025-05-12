@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Questions</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style2.css') }}"
+    />
+  </head>
+  <body>
+    <div class="navbar">
+      <div class="logo-heading">
+        <div class="logo">
+          <img src="{{ url_for('static', filename='images/logo.png') }}" />
+        </div>
+        <div class="heading">
+          <h1>GoalSync</h1>
+        </div>
+      </div>
+      <div class="navbar_sections">
+        <div class="navbar_section">
+          <a href="\dashboard#Home" class="active">Home</a>
+        </div>
+        <div class="navbar_section">
+          <a href="#Recommendation">Modules</a>
+        </div>
+        <!-- <div class="navbar_section">
+          <a href="\dashboard#Profile">Profile</a>
+        </div> -->
+        <div class="navbar_section">
+          <a href="{{ url_for('upload_marks') }}">Schedule</a>
+        </div>
+        <div class="navbar_section">
+          <a href="{{ url_for('logout') }}" class="hover:underline">Logout</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="questions-container">
+      <form id="form1" method="POST">
+        <h3>Question 1: When do you feel most productive studying?</h3>
+        <input
+          type="radio"
+          name="productive_time"
+          value="Early morning (5-8 AM)"
+        />
+        Early morning (5-8 AM)<br />
+        <input
+          type="radio"
+          name="productive_time"
+          value="Morning (8 AM-12 PM)"
+        />
+        Morning (8 AM-12 PM)<br />
+        <input
+          type="radio"
+          name="productive_time"
+          value="Afternoon (12-5 PM)"
+        />
+        Afternoon (12-5 PM)<br />
+        <input type="radio" name="productive_time" value="Evening (5-9 PM)" />
+        Evening (5-9 PM)<br />
+        <input type="radio" name="productive_time" value="Night (9 PM-12 AM)" />
+        Night (9 PM-12 AM)<br />
+        <input
+          type="radio"
+          name="productive_time"
+          value="Late night (12 AM-5 AM)"
+        />
+        Late night (12 AM-5 AM)<br /><br />
+
+        <h3>Question 2: How do you prefer to learn new concepts?</h3>
+        <input
+          type="radio"
+          name="learning_preference"
+          value="Through videos and visual aids"
+        />
+        Through videos and visual aids<br />
+        <input
+          type="radio"
+          name="learning_preference"
+          value="By reading textbooks/notes"
+        />
+        By reading textbooks/notes<br />
+        <input
+          type="radio"
+          name="learning_preference"
+          value="Through hands-on practice"
+        />
+        Through hands-on practice<br />
+        <input
+          type="radio"
+          name="learning_preference"
+          value="In group discussions"
+        />
+        In group discussions<br /><br />
+
+        <h3>Question 3: How long can you focus without getting distracted?</h3>
+        <input type="radio" name="focus_span" value="Less than 15 minutes" />
+        Less than 15 minutes<br />
+        <input type="radio" name="focus_span" value="15-30 minutes" /> 15-30
+        minutes<br />
+        <input type="radio" name="focus_span" value="30-60 minutes" /> 30-60
+        minutes<br />
+        <input type="radio" name="focus_span" value="1-2 hours" /> 1-2 hours<br />
+        <input type="radio" name="focus_span" value="More than 2 hours" /> More
+        than 2 hours<br /><br />
+
+        <h3>Question 4: How often do you review material after class?</h3>
+        <input type="radio" name="review_material" value="Never" /> Never<br />
+        <input type="radio" name="review_material" value="Rarely" />
+        Rarely<br />
+        <input type="radio" name="review_material" value="Sometimes" />
+        Sometimes<br />
+        <input type="radio" name="review_material" value="Often" /> Often<br />
+        <input type="radio" name="review_material" value="Always" />
+        Always<br /><br />
+
+        <h3>Question 5: How do you prepare for exams?</h3>
+        <input
+          type="radio"
+          name="exam_preparation"
+          value="Cram the night before"
+        />
+        Cram the night before<br />
+        <input
+          type="radio"
+          name="exam_preparation"
+          value="Study a few days before"
+        />
+        Study a few days before<br />
+        <input
+          type="radio"
+          name="exam_preparation"
+          value="Study regularly throughout"
+        />
+        Study regularly throughout<br />
+        <input
+          type="radio"
+          name="exam_preparation"
+          value="Create a detailed study plan weeks in advance"
+        />
+        Create a detailed study plan weeks in advance<br /><br />
+
+        <h3>Question 6: How do you take notes in class?</h3>
+        <input type="radio" name="note_taking" value="I don't take notes" /> I
+        don't take notes<br />
+        <input
+          type="radio"
+          name="note_taking"
+          value="I jot down a few points"
+        />
+        I jot down a few points<br />
+        <input type="radio" name="note_taking" value="I take detailed notes" />
+        I take detailed notes<br />
+        <input
+          type="radio"
+          name="note_taking"
+          value="I use structured methods like Cornell notes"
+        />
+        I use structured methods like Cornell notes<br /><br />
+
+        <h3>Question 7: How often do you ask questions in class?</h3>
+        <input type="radio" name="ask_questions" value="Never" /> Never<br />
+        <input type="radio" name="ask_questions" value="Rarely" /> Rarely<br />
+        <input type="radio" name="ask_questions" value="Sometimes" />
+        Sometimes<br />
+        <input type="radio" name="ask_questions" value="Often" />
+        Often<br /><br />
+
+        <h3>Question 8: How do you handle difficult concepts?</h3>
+        <input
+          type="radio"
+          name="handle_difficult_concepts"
+          value="Skip them"
+        />
+        Skip them<br />
+        <input
+          type="radio"
+          name="handle_difficult_concepts"
+          value="Try to understand briefly"
+        />
+        Try to understand briefly<br />
+        <input
+          type="radio"
+          name="handle_difficult_concepts"
+          value="Spend time until I understand"
+        />
+        Spend time until I understand<br />
+        <input
+          type="radio"
+          name="handle_difficult_concepts"
+          value="Research deeply and ask for help"
+        />
+        Research deeply and ask for help<br /><br />
+
+        <h3>Question 9: How organized are your study materials?</h3>
+        <input
+          type="radio"
+          name="study_materials_organization"
+          value="Not organized at all"
+        />
+        Not organized at all<br />
+        <input
+          type="radio"
+          name="study_materials_organization"
+          value="Somewhat organized"
+        />
+        Somewhat organized<br />
+        <input
+          type="radio"
+          name="study_materials_organization"
+          value="Fairly organized"
+        />
+        Fairly organized<br />
+        <input
+          type="radio"
+          name="study_materials_organization"
+          value="Very organized"
+        />
+        Very organized<br /><br />
+
+        <button type="submit">Submit Answers</button>
+      </form>
+    </div>
+  </body>
+</html>

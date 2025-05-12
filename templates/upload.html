@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UploadMarks</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style2.css') }}"
+    />
+  </head>
+  <body>
+    <div class="navbar">
+      <div class="logo-heading">
+        <div class="logo">
+          <img src="{{ url_for('static', filename='images/logo.png') }}" />
+        </div>
+        <div class="heading">
+          <h1>GoalSync</h1>
+        </div>
+      </div>
+      <div class="navbar_sections">
+        <div class="navbar_section">
+          <a href="\dashboard#Home" class="active">Home</a>
+        </div>
+        <div class="navbar_section">
+          <a href="#Recommendation">Modules</a>
+        </div>
+        <div class="navbar_section">
+          <a href="{{ url_for('upload_marks') }}">Schedule</a>
+        </div>
+        <div class="navbar_section">
+          <a href="{{ url_for('logout') }}" class="hover:underline">Logout</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="marks_box">
+      <form id="form1" method="post" action="{{ url_for('upload_marks') }}">
+        <p>Which exam you are giving currently?</p>
+        <select name="grade" onchange="updateInputField()" id="grade">
+          <option value="">--Select--</option>
+          <option value="MBA Sem1">MBA Sem1</option>
+          <option value="MBA Sem2">MBA Sem2</option>
+          <option value="MCA Sem1">MCA Sem1</option>
+          <option value="MCA Sem2">MCA Sem2</option>
+        </select>
+
+        <div id="dynamicInput"></div>
+
+        {% if msg %}
+        <div class="alert alert-info">
+          <p>{{ msg }}</p>
+        </div>
+        {% endif %}
+
+        <div id="studyHoursResult">
+          {% if timetable_target %}
+          <h3>Timetable for Target CGPA</h3>
+          <p>
+            Your target CGPA requires you to study for {{ timetable_target }}
+            hours daily.
+          </p>
+          {% endif %} {% if timetable_capable %}
+          <h3>Timetable for Capable CGPA</h3>
+          <p>
+            Your capable CGPA requires you to study for {{ timetable_capable }}
+            hours daily.
+          </p>
+          {% endif %}
+        </div>
+      </form>
+    </div>
+
+    <script>
+      // Update input field to ask for CGPA after grade selection
+      function updateInputField() {
+        const grade = document.getElementById("grade").value;
+        const dynamicInput = document.getElementById("dynamicInput");
+
+        dynamicInput.innerHTML = ""; // Clear existing input fields
+
+        if (
+          grade === "MBA Sem1" ||
+          grade === "MBA Sem2" ||
+          grade === "MCA Sem1" ||
+          grade === "MCA Sem2"
+        ) {
+          dynamicInput.innerHTML = ` 
+          <br>
+          <label for="marks">Enter your target CGPA:</label>
+          <input type="text" id="marks" name="marks" /><br><br>
+          <button type="submit">Submit</button>
+          `;
+        }
+      }
+    </script>
+  </body>
+</html>
